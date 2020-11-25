@@ -1,8 +1,7 @@
-Assembly-CSharp.csproj
-*.sln
-.vs/
 Library/
 Temp/
-obj/
+*.sln
+*.csproj
+.vs/
 Logs/
-UserSettings/
+obj/

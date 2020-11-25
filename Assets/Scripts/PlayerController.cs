@@ -12,14 +12,13 @@ public class PlayerController : MonoBehaviour
     private float currentCoyote = 0f;
     public float groundedGraceDistance = 0.05f;
 
-    [Header("Collisions")]
-    public BoxCollider2D collider;
-
     [Header("State machine")]
     private PLAYER_STATE state = PLAYER_STATE.IDLE;
 
     [Header("General Movement")]
     public Rigidbody2D rBody;
+    public BoxCollider2D collider;
+    public SpriteRenderer renderer;
 
     [Header("Grounded controls")] // the "g" prefix means the variable is used when grounded
     public float g_acceleration = 25;
@@ -41,6 +40,8 @@ public class PlayerController : MonoBehaviour
     private bool isDoubleJumpAvailable = true;
     public float a_doubleJumpForce = 4;
 
+    private Vector3 startPosition;
+
     private void Awake()
     {
         if (!collider)
@@ -52,6 +53,14 @@ public class PlayerController : MonoBehaviour
         {
             rBody = GetComponent<Rigidbody2D>();
         }
+
+        if (!renderer)
+        {
+            renderer = GetComponent<SpriteRenderer>();
+        }
+
+        startPosition = transform.position;
+
     }
 
     private void Update()
@@ -65,6 +74,12 @@ public class PlayerController : MonoBehaviour
         #endregion
 
         PlayerMovement();
+        /*
+        if (!renderer.isVisible)
+        {
+            Die();
+        }*/
+
     }
 
     private void FixedUpdate()
@@ -72,7 +87,7 @@ public class PlayerController : MonoBehaviour
         CheckGrounded();
     }
 
-    public void PlayerMovement()
+    private void PlayerMovement()
     {
         float inputDirection = Convert.ToInt32(Input.GetKey("d")) - Convert.ToInt32(Input.GetKey("a"));
         float theoreticalYVector = 0;
@@ -148,7 +163,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void CheckGrounded()
+    private void CheckGrounded()
     {
         RaycastHit2D raycastHit = Physics2D.BoxCast(new Vector2(collider.bounds.center.x, collider.bounds.center.y - collider.bounds.extents.y), new Vector2(collider.bounds.extents.x * 2, groundedGraceDistance), 0, Vector2.down, 0, groundLayerMask);
 
@@ -171,6 +186,19 @@ public class PlayerController : MonoBehaviour
 
         ///See the grace distance in the scene view
         //Debug.DrawRay(collider.bounds.center, Vector2.down*(collider.bounds.extents.y + groundedGraceDistance), Color.green);
+    }
+
+    private void Die()
+    {
+        transform.position = startPosition;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Damaging"))
+        {
+            Die();
+        }
     }
 
 }

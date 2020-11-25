@@ -1,18 +1,36 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
-public class PeriodicLaser : MonoBehaviour
+public class PeriodicLaser : Resetteable
 {
 
     public GameObject laserShot;
 
     public float chargeTime = 2f;
     public float onTime = 1f;
+    private float currentTime = 0f;
 
-    private void Start()
+    private void Update()
     {
-        StartCoroutine(ChargeUp());
+        if (laserShot.activeSelf)
+        {
+            currentTime += Time.deltaTime;
+            if(currentTime >= onTime)
+            {
+                currentTime = 0;
+                laserShot.SetActive(false);
+            }
+        } else
+        {
+            currentTime += Time.deltaTime;
+            if (currentTime >= chargeTime)
+            {
+                currentTime = 0;
+                laserShot.SetActive(true);
+            }
+        }
     }
 
     IEnumerator ChargeUp()
@@ -29,4 +47,9 @@ public class PeriodicLaser : MonoBehaviour
         StartCoroutine(ChargeUp());
     }
 
+    public override void Reset()
+    {
+        laserShot.SetActive(false);
+        currentTime = 0;
+    }
 }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class MoveBetweenPoints : MonoBehaviour
+public class MoveBetweenPoints : Resetteable
 {
 
     public Transform pointA;
@@ -39,5 +39,9 @@ public class MoveBetweenPoints : MonoBehaviour
         
     }
 
+    public override void Reset()
+    {
+        transform.position = pointA.position;
+    }
 
 }

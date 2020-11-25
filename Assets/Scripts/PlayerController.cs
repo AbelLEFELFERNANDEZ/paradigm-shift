@@ -190,6 +190,7 @@ public class PlayerController : MonoBehaviour
     private void Die()
     {
         transform.position = startPosition;
+        GameController.instance.Reset();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

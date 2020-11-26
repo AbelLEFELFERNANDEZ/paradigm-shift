@@ -59,17 +59,17 @@ MonoBehaviour:
   rBody: {fileID: 16602248231020527}
   collider: {fileID: 16602248231020522}
   renderer: {fileID: 0}
-  g_acceleration: 25
-  g_drag: 14
-  g_MaxSpeed: 7
-  g_jumpForce: 13
-  maxJumpSpeed: 13
-  a_fallingGravity: 20
-  a_maxFallingSpeed: 15
+  g_acceleration: 20
+  g_drag: 8
+  g_MaxSpeed: 4
+  g_jumpForce: 5
+  maxJumpSpeed: 7
+  a_fallingGravity: 15
+  a_maxFallingSpeed: 10
   a_acceleration: 6
-  a_MaxLateralSpeed: 3
-  a_LateralDrag: 2
-  a_doubleJumpForce: 8
+  a_MaxLateralSpeed: 2
+  a_LateralDrag: 1
+  a_doubleJumpForce: 6
   AudioStep: {fileID: 2431278578636742046}
   AudioDeath: {fileID: 3704275149717896134}
   AudioJumpStart: {fileID: 6105355719519263841}

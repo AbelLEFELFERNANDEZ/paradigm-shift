@@ -6,9 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: "Assets/Scenes/D\xE9part.unity"
+    path: Assets/Scenes/Menu.unity
     guid: 20e609829defd1844a2d8019f3a36850
   - enabled: 1
     path: Assets/Scenes/NormalIteration.unity
     guid: 84b52e8efcaba104788d360790da3728
+  - enabled: 0
+    path: Assets/Scenes/DEVROOM.unity
+    guid: 34f8ea7a8aabc104eb724566fb8bd890
+  - enabled: 1
+    path: Assets/Scenes/HurtIteration.unity
+    guid: 7dce88eedf3681348960a65fedee9cc4
+  - enabled: 1
+    path: Assets/Scenes/LowLightIteration.unity
+    guid: 68528275afb180843b25095ef715657f
+  - enabled: 1
+    path: Assets/Scenes/UpsideDownIteration.unity
+    guid: 65b2ed981a2aee2419df015285bc6523
   m_configObjects: {}

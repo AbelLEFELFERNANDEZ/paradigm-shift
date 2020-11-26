@@ -258,6 +258,19 @@ public class PlayerController : MonoBehaviour
             rBody.velocity = collision.contacts[0].normal * 2;
             dying = true;
         }
+
+        if (collision.gameObject.CompareTag("Platform"))
+        {
+            transform.parent = collision.gameObject.transform;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Platform"))
+        {
+            transform.parent = null;
+        }
     }
 
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class GameController : MonoBehaviour
 
     public int coins = 0;
     public bool hasKey = false;
+
+    public GameObject endLevelPanel;
 
     private Resetteable[] resetObjects;
 
@@ -56,7 +59,20 @@ public class GameController : MonoBehaviour
 
     public void Win()
     {
-        Debug.Log("yay");
+        if (endLevelPanel)
+        {
+            endLevelPanel.SetActive(true);
+        }
+    }
+
+    public void LoadLevel(string name)
+    {
+        SceneManager.LoadScene(name);
+    }
+
+    public void GoToMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 
 }

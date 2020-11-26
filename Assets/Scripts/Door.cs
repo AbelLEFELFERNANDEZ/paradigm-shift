@@ -8,6 +8,8 @@ public class Door : MonoBehaviour
     {
         if(collision.gameObject.GetComponent<PlayerController>() && GameController.instance.hasKey)
         {
+            transform.Find("Lock").gameObject.SetActive(false);
+            GetComponent<Animator>().Play("DoorOpen");
             GameController.instance.Win();
         }
     }

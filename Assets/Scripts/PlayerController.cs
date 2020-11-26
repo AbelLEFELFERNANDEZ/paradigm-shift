@@ -102,10 +102,12 @@ public class PlayerController : MonoBehaviour
             CheckGrounded();
         }
     }
-
+    
     private void PlayerMovement()
     {
-        float inputDirection = Convert.ToInt32(Input.GetKey("d")) - Convert.ToInt32(Input.GetKey("a"));
+        //float inputDirection = Convert.ToInt32(Input.GetKey("d")) - Convert.ToInt32(Input.GetKey("a"));
+        //float inputDirection = Mathf.Round(Input.GetAxis("Horizontal"));
+        float inputDirection = Convert.ToInt32(Input.GetButton("Fire2")) - Convert.ToInt32(Input.GetButton("Fire1"));
         float theoreticalYVector = 0;
         float theoreticalXVector = 0;
 

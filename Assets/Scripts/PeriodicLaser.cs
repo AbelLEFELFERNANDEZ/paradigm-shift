@@ -5,13 +5,17 @@ using UnityEngine.PlayerLoop;
 
 public class PeriodicLaser : Resetteable
 {
-
+    AudioSource Audio;
     public GameObject laserShot;
 
     public float chargeTime = 2f;
     public float onTime = 1f;
     private float currentTime = 0f;
 
+    private void Start()
+    {
+        Audio = GetComponent<AudioSource>();
+    }
     private void Update()
     {
         if (laserShot.activeSelf)
@@ -27,6 +31,7 @@ public class PeriodicLaser : Resetteable
             currentTime += Time.deltaTime;
             if (currentTime >= chargeTime)
             {
+                Audio.Play();
                 currentTime = 0;
                 laserShot.SetActive(true);
             }

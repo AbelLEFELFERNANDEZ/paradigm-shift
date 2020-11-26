@@ -1216,6 +1216,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LaserShooter
       objectReference: {fileID: 0}
+    - target: {fileID: 2248426252837075858, guid: c6513998ea1981f4ea401d1bab3032d9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6513998ea1981f4ea401d1bab3032d9, type: 3}
 --- !u!1001 &3125588765907166193

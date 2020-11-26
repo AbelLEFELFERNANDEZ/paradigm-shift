@@ -1,5 +1,7 @@
 ﻿using System;
 using UnityEngine;
+
+using UnityEngine.Audio;
 using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
@@ -43,7 +45,15 @@ public class PlayerController : MonoBehaviour
     private Vector3 startPosition;
     private Animator animator;
     private bool dying = false;
-    private AudioSource Audio;
+
+    public AudioSource AudioStep;
+    public AudioSource AudioDeath;
+    public AudioSource AudioJumpStart;
+    public AudioSource AudioJumpLanding;
+
+ 
+
+    
 
     private void Awake()
     {
@@ -63,8 +73,8 @@ public class PlayerController : MonoBehaviour
         }
 
         animator = GetComponent<Animator>();
-        Audio = GetComponent<AudioSource>();
 
+        
         startPosition = transform.position;
 
     }
@@ -126,6 +136,8 @@ public class PlayerController : MonoBehaviour
             state = PLAYER_STATE.AIRBORNE;
             if (!animator.GetCurrentAnimatorStateInfo(0).IsName("PlayerJumpStart"))
             {
+                AudioStep.Stop();
+                AudioJumpStart.Play();
                 animator.Play("PlayerJumpStart");
             }
         } else if (Input.GetKeyDown("space") && isDoubleJumpAvailable)
@@ -135,6 +147,7 @@ public class PlayerController : MonoBehaviour
             isDoubleJumpAvailable = false;
             if (!animator.GetCurrentAnimatorStateInfo(0).IsName("PlayerJumpStart"))
             {
+                AudioJumpStart.Play();
                 animator.Play("PlayerJumpStart");
             }
         }
@@ -156,6 +169,7 @@ public class PlayerController : MonoBehaviour
 
                 if (!animator.GetCurrentAnimatorStateInfo(0).IsName("PlayerRun"))
                 {
+                    AudioStep.Play();
                     animator.Play("PlayerRun");
                 }
 
@@ -166,6 +180,7 @@ public class PlayerController : MonoBehaviour
                 rBody.velocity = new Vector2(Mathf.Sign(theoreticalXVector) * Mathf.Max(0,Mathf.Sign(rBody.velocity.x) * theoreticalXVector), rBody.velocity.y);
                 if (!animator.GetCurrentAnimatorStateInfo(0).IsName("PlayerIdle"))
                 {
+                    AudioStep.Stop();
                     animator.Play("PlayerIdle");
                 }
             }
@@ -209,6 +224,9 @@ public class PlayerController : MonoBehaviour
             currentCoyote = coyoteTime;
             if (state == PLAYER_STATE.AIRBORNE)
             {
+                AudioJumpLanding.Play();
+               // Debug.Log("tg");
+
                 state = PLAYER_STATE.GROUNDMOVING;
                 isDoubleJumpAvailable = true;
             }
@@ -235,7 +253,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Damaging") && !dying)
         {
-            Audio.Play();
+            AudioDeath.Play();
             animator.Play("PlayerDeath");
             rBody.velocity = collision.contacts[0].normal * 2;
             dying = true;

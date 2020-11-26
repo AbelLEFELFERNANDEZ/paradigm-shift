@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 startPosition;
     private Animator animator;
     private bool dying = false;
+    private AudioSource Audio;
 
     private void Awake()
     {
@@ -62,6 +63,7 @@ public class PlayerController : MonoBehaviour
         }
 
         animator = GetComponent<Animator>();
+        Audio = GetComponent<AudioSource>();
 
         startPosition = transform.position;
 
@@ -231,8 +233,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Damaging"))
+        if (collision.gameObject.CompareTag("Damaging") && !dying)
         {
+            Audio.Play();
             animator.Play("PlayerDeath");
             rBody.velocity = collision.contacts[0].normal * 2;
             dying = true;

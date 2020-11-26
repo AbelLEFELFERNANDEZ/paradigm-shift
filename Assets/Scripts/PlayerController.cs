@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -40,6 +41,8 @@ public class PlayerController : MonoBehaviour
     public float a_doubleJumpForce = 4;
 
     private Vector3 startPosition;
+    private Animator animator;
+    private bool dying = false;
 
     private void Awake()
     {
@@ -58,32 +61,34 @@ public class PlayerController : MonoBehaviour
             renderer = GetComponent<SpriteRenderer>();
         }
 
+        animator = GetComponent<Animator>();
+
         startPosition = transform.position;
 
     }
 
     private void Update()
     {
-
-        #region countdowns
-        if (currentCoyote > 0)
+        if (!dying)
         {
-            currentCoyote -= Time.deltaTime;
+
+            #region countdowns
+            if (currentCoyote > 0)
+            {
+                currentCoyote -= Time.deltaTime;
+            }
+            #endregion
+
+            PlayerMovement();
         }
-        #endregion
-
-        PlayerMovement();
-        /*
-        if (!renderer.isVisible)
-        {
-            Die();
-        }*/
-
     }
 
     private void FixedUpdate()
     {
-        CheckGrounded();
+        if (!dying)
+        {
+            CheckGrounded();
+        }
     }
 
     private void PlayerMovement()
@@ -98,6 +103,10 @@ public class PlayerController : MonoBehaviour
         if (theoreticalYVector < 0)
         {
             rBody.velocity = new Vector2(rBody.velocity.x, Mathf.Sign(theoreticalYVector) * Mathf.Min(Mathf.Abs(theoreticalYVector), a_maxFallingSpeed));
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("PlayerFall") && !isGrounded)
+            {
+                animator.Play("PlayerFall");
+            }
         } else
         {
             rBody.velocity = new Vector2(rBody.velocity.x, theoreticalYVector);
@@ -113,11 +122,19 @@ public class PlayerController : MonoBehaviour
             currentCoyote = 0;
             isGrounded = false;
             state = PLAYER_STATE.AIRBORNE;
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("PlayerJumpStart"))
+            {
+                animator.Play("PlayerJumpStart");
+            }
         } else if (Input.GetKeyDown("space") && isDoubleJumpAvailable)
         {
             theoreticalYVector = a_doubleJumpForce;
             rBody.velocity = new Vector2(rBody.velocity.x, Mathf.Sign(theoreticalYVector) * Mathf.Min(Mathf.Abs(theoreticalYVector), maxJumpSpeed));
             isDoubleJumpAvailable = false;
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("PlayerJumpStart"))
+            {
+                animator.Play("PlayerJumpStart");
+            }
         }
 
         #endregion
@@ -134,11 +151,21 @@ public class PlayerController : MonoBehaviour
                 {
                     state = PLAYER_STATE.GROUNDMOVING;
                 }
+
+                if (!animator.GetCurrentAnimatorStateInfo(0).IsName("PlayerRun"))
+                {
+                    animator.Play("PlayerRun");
+                }
+
             }
             else
             {
                 theoreticalXVector = rBody.velocity.x - Mathf.Sign(rBody.velocity.x) * g_drag * Time.deltaTime;
                 rBody.velocity = new Vector2(Mathf.Sign(theoreticalXVector) * Mathf.Max(0,Mathf.Sign(rBody.velocity.x) * theoreticalXVector), rBody.velocity.y);
+                if (!animator.GetCurrentAnimatorStateInfo(0).IsName("PlayerIdle"))
+                {
+                    animator.Play("PlayerIdle");
+                }
             }
         }
         #endregion
@@ -159,6 +186,14 @@ public class PlayerController : MonoBehaviour
             }
         }
         #endregion
+
+        if(rBody.velocity.x < 0)
+        {
+            transform.rotation = Quaternion.Euler(0,180,0);
+        } else if (rBody.velocity.x > 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
 
     }
 
@@ -187,17 +222,20 @@ public class PlayerController : MonoBehaviour
         //Debug.DrawRay(collider.bounds.center, Vector2.down*(collider.bounds.extents.y + groundedGraceDistance), Color.green);
     }
 
-    private void Die()
+    public void Die()
     {
         transform.position = startPosition;
         GameController.instance.Reset();
+        dying = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Damaging"))
         {
-            Die();
+            animator.Play("PlayerDeath");
+            rBody.velocity = collision.contacts[0].normal * 2;
+            dying = true;
         }
     }
 

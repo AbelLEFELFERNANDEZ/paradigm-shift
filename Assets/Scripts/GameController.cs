@@ -5,6 +5,8 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public static GameController instance;
+    public AudioSource coinSource;
+    public AudioSource keySource;
 
     public int coins = 0;
     public bool hasKey = false;
@@ -36,12 +38,20 @@ public class GameController : MonoBehaviour
 
     public void GainCoin()
     {
+        if (coinSource)
+        {
+            coinSource.Play();
+        }
         coins += 1;
     }
 
     public void GetKey()
     {
         hasKey = true;
+        if (keySource)
+        {
+            keySource.Play();
+        }
     }
 
     public void Win()

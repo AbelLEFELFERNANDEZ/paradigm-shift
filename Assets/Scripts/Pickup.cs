@@ -7,8 +7,9 @@ abstract public class Pickup : Resetteable
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        gameObject.SetActive(false);
         Picked();
+        gameObject.SetActive(false);
+        
     }
 
     protected abstract void Picked();

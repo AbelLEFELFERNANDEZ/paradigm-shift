@@ -1,25 +1,13 @@
 fileFormatVersion: 2
-guid: 25d90210180db2e42af6c51da7849d3c
+guid: 0ee16f7ecfdcf9d47869a23a07ca5843
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -9040800026121226836
-    second: AnimJumpPerso_0
+      213: -7217000642496251537
+    second: DebutSaut_0
   - first:
-      213: -4049607038194626761
-    second: AnimJumpPerso_1
-  - first:
-      213: 7086206607869986247
-    second: AnimJumpPerso_2
-  - first:
-      213: 1265361069058745251
-    second: AnimJumpPerso_3
-  - first:
-      213: -7994684200982122974
-    second: AnimJumpPerso_4
-  - first:
-      213: 5710263810321601513
-    second: AnimJumpPerso_5
+      213: -6867844862687794223
+    second: DebutSaut_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -105,91 +93,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: AnimJumpPerso_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 240
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ca5b3b5c640a88280800000000000000
-      internalID: -9040800026121226836
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AnimJumpPerso_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 192
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 73fcc70cad7ecc7c0800000000000000
-      internalID: -4049607038194626761
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AnimJumpPerso_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 144
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7c5cd139d53475260800000000000000
-      internalID: 7086206607869986247
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AnimJumpPerso_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 96
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3a3ead920377f8110800000000000000
-      internalID: 1265361069058745251
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AnimJumpPerso_4
+      name: DebutSaut_0
       rect:
         serializedVersion: 2
         x: 0
@@ -203,14 +107,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 22e680da31d2d0190800000000000000
-      internalID: -7994684200982122974
+      spriteID: f69be38272018db90800000000000000
+      internalID: -7217000642496251537
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AnimJumpPerso_5
+      name: DebutSaut_1
       rect:
         serializedVersion: 2
         x: 0
@@ -224,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e3dcf36eaeee3f40800000000000000
-      internalID: 5710263810321601513
+      spriteID: 1dba00b1c7380b0a0800000000000000
+      internalID: -6867844862687794223
       vertices: []
       indices: 
       edges: []

@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     public float groundedGraceDistance = 0.05f;
 
     [Header("State machine")]
-    private PLAYER_STATE state = PLAYER_STATE.IDLE;
+    private PLAYER_STATE state = PLAYER_STATE.AIRBORNE;
 
     [Header("General Movement")]
     public Rigidbody2D rBody;

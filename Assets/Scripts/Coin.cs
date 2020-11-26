@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Coin : Pickup
 {
+
     protected override void Picked()
     {
         GameController.instance.GainCoin();

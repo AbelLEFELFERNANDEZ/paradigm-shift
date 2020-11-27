@@ -247,7 +247,10 @@ public class PlayerController : MonoBehaviour
     public void Die()
     {
         transform.position = startPosition;
-        GameController.instance.Reset();
+        if (GameController.instance) 
+        {
+            GameController.instance.Reset(); 
+        }
         dying = false;
     }
 

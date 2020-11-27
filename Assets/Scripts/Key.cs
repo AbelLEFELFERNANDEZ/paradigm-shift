@@ -8,4 +8,9 @@ public class Key : Pickup
     {
         GameController.instance.GetKey();
     }
+
+    public override void Reset()
+    {
+
+    }
 }

@@ -12,8 +12,10 @@ public class GameController : MonoBehaviour
     public AudioSource keySource;
 
     public Text scoreText;
+    public Text deathText;
 
     public int coins;
+    public int deaths;
 
 
     public bool hasKey = false;
@@ -26,6 +28,7 @@ public class GameController : MonoBehaviour
     {
         //PlayerPrefs.SetInt("CoinScore", 0);
         coins = 0;
+        deaths = 0;
         instance = this;
         hasKey = false;
     }
@@ -36,6 +39,10 @@ public class GameController : MonoBehaviour
         if (scoreText)
         {
             scoreText.text = coins.ToString();
+        }
+        if (deathText)
+        {
+            deathText.text = deaths.ToString();
         }
     }
 
@@ -48,7 +55,12 @@ public class GameController : MonoBehaviour
         {
             scoreText.text = coins.ToString();
         }
-        hasKey = false;
+
+        deaths += 1;
+        if (deathText)
+        {
+            deathText.text = deaths.ToString();
+        }
 
         foreach(Resetteable obj in resetObjects)
         {

@@ -2,6 +2,7 @@
 using UnityEngine;
 
 using UnityEngine.Audio;
+using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
@@ -51,7 +52,7 @@ public class PlayerController : MonoBehaviour
     public AudioSource AudioJumpStart;
     public AudioSource AudioJumpLanding;
 
- 
+    Keyboard keyboard;
 
     
 
@@ -74,7 +75,7 @@ public class PlayerController : MonoBehaviour
 
         animator = GetComponent<Animator>();
 
-        
+        keyboard = Keyboard.current;
         startPosition = transform.position;
 
     }
@@ -107,7 +108,8 @@ public class PlayerController : MonoBehaviour
     {
         //float inputDirection = Convert.ToInt32(Input.GetKey("d")) - Convert.ToInt32(Input.GetKey("a"));
         //float inputDirection = Mathf.Round(Input.GetAxis("Horizontal"));
-        float inputDirection = Convert.ToInt32(Input.GetButton("Fire2")) - Convert.ToInt32(Input.GetButton("Fire1"));
+        //float inputDirection = Convert.ToInt32(Input.GetButton("Fire2")) - Convert.ToInt32(Input.GetButton("Fire1"));
+        float inputDirection = Convert.ToInt32(keyboard.dKey.isPressed) - Convert.ToInt32(keyboard.aKey.isPressed);
         float theoreticalYVector = 0;
         float theoreticalXVector = 0;
 
@@ -129,7 +131,7 @@ public class PlayerController : MonoBehaviour
 
         #region jump
 
-        if(Input.GetKeyDown("space") && isGrounded)
+        if(keyboard.spaceKey.wasPressedThisFrame && isGrounded)
         {
             theoreticalYVector = g_jumpForce;
             rBody.velocity = new Vector2(rBody.velocity.x, Mathf.Sign(theoreticalYVector) * Mathf.Min(Mathf.Abs(theoreticalYVector), maxJumpSpeed));
@@ -142,7 +144,7 @@ public class PlayerController : MonoBehaviour
                 AudioJumpStart.Play();
                 animator.Play("PlayerJumpStart");
             }
-        } else if (Input.GetKeyDown("space") && isDoubleJumpAvailable)
+        } else if (keyboard.spaceKey.wasPressedThisFrame && isDoubleJumpAvailable)
         {
             theoreticalYVector = a_doubleJumpForce;
             rBody.velocity = new Vector2(rBody.velocity.x, Mathf.Sign(theoreticalYVector) * Mathf.Min(Mathf.Abs(theoreticalYVector), maxJumpSpeed));

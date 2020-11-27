@@ -1921,6 +1921,11 @@ PrefabInstance:
       propertyPath: scoreText
       value: 
       objectReference: {fileID: 1495331274}
+    - target: {fileID: 8287495971050457520, guid: 348dca78d4d13524b8cc8223a597b4f1,
+        type: 3}
+      propertyPath: deathText
+      value: 
+      objectReference: {fileID: 8482803737845558700}
     - target: {fileID: 8287495971050457521, guid: 348dca78d4d13524b8cc8223a597b4f1,
         type: 3}
       propertyPath: m_Name
@@ -8851,3 +8856,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49c757fc461959f49839b655ec33ee95, type: 3}
+--- !u!114 &8482803737845558700 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8383661137724116252, guid: 49c757fc461959f49839b655ec33ee95,
+    type: 3}
+  m_PrefabInstance: {fileID: 8482803737845558699}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

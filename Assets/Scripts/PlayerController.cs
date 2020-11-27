@@ -248,6 +248,7 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
     {
+        rBody.velocity = Vector2.zero;
         transform.position = startPosition;
         if (GameController.instance) 
         {

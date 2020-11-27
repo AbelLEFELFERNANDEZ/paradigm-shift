@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
@@ -12,6 +13,8 @@ public class GameController : MonoBehaviour
 
     public Text scoreText;
 
+    public int coins;
+
 
     public bool hasKey = false;
 
@@ -21,7 +24,8 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
-        PlayerPrefs.SetInt("CoinScore", 0);
+        //PlayerPrefs.SetInt("CoinScore", 0);
+        coins = 0;
         instance = this;
         hasKey = false;
     }
@@ -29,12 +33,21 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         resetObjects = Object.FindObjectsOfType<Resetteable>();
+        if (scoreText)
+        {
+            scoreText.text = coins.ToString();
+        }
     }
 
     public void Reset()
     {
-        PlayerPrefs.SetInt("CoinScore", 0);
-        scoreText.text = PlayerPrefs.GetInt("CoinScore").ToString();
+        //PlayerPrefs.SetInt("CoinScore", 0);
+        //scoreText.text = PlayerPrefs.GetInt("CoinScore").ToString();
+        coins = 0;
+        if (scoreText)
+        {
+            scoreText.text = coins.ToString();
+        }
         hasKey = false;
 
         foreach(Resetteable obj in resetObjects)
@@ -47,8 +60,13 @@ public class GameController : MonoBehaviour
     {
         if (coinSource)
         {
-            PlayerPrefs.SetInt("CoinScore", PlayerPrefs.GetInt("CoinScore") + 1);
-            scoreText.text = PlayerPrefs.GetInt("CoinScore").ToString();           
+            //PlayerPrefs.SetInt("CoinScore", PlayerPrefs.GetInt("CoinScore") + 1);
+            //scoreText.text = PlayerPrefs.GetInt("CoinScore").ToString();   
+            coins += 1;
+            if (scoreText)
+            {
+                scoreText.text = coins.ToString();
+            }
             coinSource.Play();
         }
         

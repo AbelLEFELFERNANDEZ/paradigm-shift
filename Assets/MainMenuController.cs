@@ -6,9 +6,18 @@ using UnityEngine.SceneManagement;
 public class MainMenuController : MonoBehaviour
 {
 
+    public GameObject levelSelectMenu;
     public void Play()
     {
-        SceneManager.LoadScene("NormalIteration");
+        if (levelSelectMenu)
+        {
+            levelSelectMenu.SetActive(true);
+        }
+    }
+
+    public void LoadLevel(string name)
+    {
+        SceneManager.LoadScene(name);
     }
 
     public void Quit()

@@ -1,34 +1,25 @@
 fileFormatVersion: 2
-guid: 813a208fc36a35748980a7ec1fbbe394
+guid: b056fa0659e76a14ba80fa34cb50bb4e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7244029534134283316
-    second: BoutonsSelectNiv_0
+      213: -7652920413500038675
+    second: "AnimCl\xE9_0"
   - first:
-      213: 3737562995535282097
-    second: BoutonsSelectNiv_1
+      213: 3949287152773423789
+    second: "AnimCl\xE9_1"
   - first:
-      213: -5061303165988851263
-    second: BoutonsSelectNiv_2
+      213: -758689547054786129
+    second: "AnimCl\xE9_2"
   - first:
-      213: -6360397655254140396
-    second: BoutonsSelectNiv_3
+      213: -1375887378161646173
+    second: "AnimCl\xE9_3"
   - first:
-      213: -2127244278039433219
-    second: BoutonsSelectNiv_0
+      213: 9099241198491213869
+    second: "AnimCl\xE9_4"
   - first:
-      213: 1104927698205384054
-    second: BoutonsSelectNiv_1
-  - first:
-      213: -4212753613182157921
-    second: BoutonsSelectNiv_2
-  - first:
-      213: -1088134660894706795
-    second: BoutonsSelectNiv_3
-  - first:
-      213: 8467166058588447590
-    second: BoutonsSelectNiv_4
+      213: -2017147441362062074
+    second: "AnimCl\xE9_5"
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -72,7 +63,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 48
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -114,7 +105,28 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BoutonsSelectNiv_0
+      name: "AnimCl\xE9_0"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 240
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de1aefa4e6d5bc590800000000000000
+      internalID: -7652920413500038675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "AnimCl\xE9_1"
       rect:
         serializedVersion: 2
         x: 0
@@ -128,14 +140,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dff2af889928a72e0800000000000000
-      internalID: -2127244278039433219
+      spriteID: da2e211cdbfaec630800000000000000
+      internalID: 3949287152773423789
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BoutonsSelectNiv_1
+      name: "AnimCl\xE9_2"
       rect:
         serializedVersion: 2
         x: 0
@@ -149,14 +161,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67d950a23ed755f00800000000000000
-      internalID: 1104927698205384054
+      spriteID: fa95ffc60e79875f0800000000000000
+      internalID: -758689547054786129
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BoutonsSelectNiv_2
+      name: "AnimCl\xE9_3"
       rect:
         serializedVersion: 2
         x: 0
@@ -170,14 +182,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f9bb800b8ea4985c0800000000000000
-      internalID: -4212753613182157921
+      spriteID: 3a54bb528bdd7ece0800000000000000
+      internalID: -1375887378161646173
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BoutonsSelectNiv_3
+      name: "AnimCl\xE9_4"
       rect:
         serializedVersion: 2
         x: 0
@@ -191,14 +203,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 593b4958a4b26e0f0800000000000000
-      internalID: -1088134660894706795
+      spriteID: d202ba109aff64e70800000000000000
+      internalID: 9099241198491213869
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BoutonsSelectNiv_4
+      name: "AnimCl\xE9_5"
       rect:
         serializedVersion: 2
         x: 0
@@ -212,8 +224,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 663a8685baa618570800000000000000
-      internalID: 8467166058588447590
+      spriteID: 605b602e617a104e0800000000000000
+      internalID: -2017147441362062074
       vertices: []
       indices: 
       edges: []

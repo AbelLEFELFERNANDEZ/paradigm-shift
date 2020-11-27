@@ -249,6 +249,7 @@ public class PlayerController : MonoBehaviour
     public void Die()
     {
         rBody.velocity = Vector2.zero;
+        isDoubleJumpAvailable = true;
         transform.position = startPosition;
         if (GameController.instance) 
         {
@@ -271,6 +272,16 @@ public class PlayerController : MonoBehaviour
         {
             transform.parent = collision.gameObject.transform;
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Key"))
+        {
+            startPosition = collision.gameObject.transform.position;
+            Debug.Log("new position set");
+        }
+
     }
 
     private void OnCollisionExit2D(Collision2D collision)

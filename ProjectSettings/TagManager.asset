@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Damaging
   - Platform
+  - Key
   layers:
   - Default
   - TransparentFX

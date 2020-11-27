@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -9,7 +10,9 @@ public class GameController : MonoBehaviour
     public AudioSource coinSource;
     public AudioSource keySource;
 
-    public int coins = 0;
+    public Text scoreText;
+
+
     public bool hasKey = false;
 
     public GameObject endLevelPanel;
@@ -18,8 +21,8 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
+        PlayerPrefs.SetInt("CoinScore", 0);
         instance = this;
-        coins = 0;
         hasKey = false;
     }
 
@@ -30,7 +33,8 @@ public class GameController : MonoBehaviour
 
     public void Reset()
     {
-        coins = 0;
+        PlayerPrefs.SetInt("CoinScore", 0);
+        scoreText.text = PlayerPrefs.GetInt("CoinScore").ToString();
         hasKey = false;
 
         foreach(Resetteable obj in resetObjects)
@@ -43,9 +47,11 @@ public class GameController : MonoBehaviour
     {
         if (coinSource)
         {
+            PlayerPrefs.SetInt("CoinScore", PlayerPrefs.GetInt("CoinScore") + 1);
+            scoreText.text = PlayerPrefs.GetInt("CoinScore").ToString();           
             coinSource.Play();
         }
-        coins += 1;
+        
     }
 
     public void GetKey()
